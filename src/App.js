@@ -7,11 +7,10 @@ function App() {
   const [input, setInput] = useState('');
   const [city, setCity] = useState(null);
 
-
 //USED OPENWEATHER API TO GET THE TEMPERATURE OF CTIES
   useEffect(() => {
     const fetchApi = async () => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=b7f2355a23f0de2b6a7c412ba64a22cb`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${process.env.REACT_APP_SECRET_KEY}`;
       const response = await fetch(url);
       const resJson = await response.json();
       setCity(resJson.main);
